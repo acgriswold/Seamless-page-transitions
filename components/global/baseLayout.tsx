@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 
 import Header from './header';
+import Footer from './footer';
 
 interface InternalLayoutProps {}
 type LayoutProps = PropsWithChildren<InternalLayoutProps>;
@@ -12,6 +13,7 @@ export default function BaseLayout({ children }: LayoutProps) {
       <main style={{ display: 'flex', flexDirection: 'row' }}>
         <section>{children}</section>
       </main>
+      <Footer />
     </>
   );
 }
