@@ -7,7 +7,11 @@ It is an exercise in layout animations and transitioning states between pages.
 
 - Next.js
 - Typescript
+
+### Animation/ visuals
 - framer.motion
+- tailwindcss
+- daisyui
 
 ## Getting Started
 
