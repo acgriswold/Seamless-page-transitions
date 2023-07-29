@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import styles from '@/styles/Home.module.css';
+import styles from '../../styles/Home.module.css';
 
 const paths = [{ uid: 10, name: 'Home', slug: '/' }];
 
