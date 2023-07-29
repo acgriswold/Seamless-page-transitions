@@ -1,7 +1,7 @@
-## Seemless
+## Seamless
 
-This project scaffolds a full stack photography playground with heavy emphasis on micro and macro animations.  
-It is an excersize in layout animations and transitioning state between pages.
+This project scaffolds a full-stack photography playground with a heavy emphasis on micro and macro animations.  
+It is an exercise in layout animations and transitioning states between pages.
 
 ## Techstack
 
