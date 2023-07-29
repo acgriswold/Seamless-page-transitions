@@ -9,4 +9,12 @@ module.exports = {
     extend: {},
   },
   plugins: [require('daisyui')],
+  daisyui: {
+    themes: ['emerald', 'light', 'night'],
+    darkTheme: 'night',
+    base: true,
+    styled: true,
+    utils: true,
+    prefix: 'daisy',
+  },
 };
