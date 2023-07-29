@@ -15,6 +15,6 @@ module.exports = {
     base: true,
     styled: true,
     utils: true,
-    prefix: 'daisy',
+    prefix: 'daisy-',
   },
 };
