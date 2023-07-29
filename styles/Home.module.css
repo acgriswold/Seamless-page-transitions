@@ -35,7 +35,8 @@
   align-items: center;
 }
 
-.title a {
+.title a,
+.emphasis {
   color: #0070f3;
   text-decoration: none;
 }
