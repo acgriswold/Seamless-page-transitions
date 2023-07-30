@@ -14,7 +14,7 @@ export type ProductProps = {
 
 export function Product(props: ProductProps) {
   return (
-    <div className="daisy-card daisy-card-compact daisy-card-bordered bg-base-100 shadow-lg">
+    <div className="daisy-card daisy-card-compact daisy-card-bordered bg-base-100 shadow-sm not-prose">
       <figure>
         <Image
           src={props.image.src}
@@ -24,7 +24,7 @@ export function Product(props: ProductProps) {
         />
       </figure>
 
-      <div className="daisy-card-body grid gap-auto grid-cols-2">
+      <div className="daisy-card-body grid gap-auto grid-cols-2 prose">
         <strong>{props.title}</strong>
         <div className="text-right">{props.productId}</div>
       </div>
