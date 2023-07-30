@@ -1,34 +1,34 @@
-import Image from 'next/image';
+import { Product } from '../components/product';
 
 import styles from '../styles/Home.module.css';
 
-export default function Home({ images }) {
+export default function Home({ products }) {
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>
-        Welcome to <span className={styles.emphasis}>Seamless!</span>
-      </h1>
-
-      {images.map((image) => {
-        return <Image {...image} />;
+      {products.map((product) => {
+        return <Product key={product.title} {...product} />;
       })}
     </div>
   );
 }
 
 export function getServerSideProps() {
-  const images = [
+  const products = [
     {
-      src: '/../public/gold_necklace.jpg',
-      alt: 'A golden necklace in editorial styling. Rays of sunlight and pastel colors draw the attention to the necklace sitting on a minimal background.',
-      width: '250',
-      height: '250',
+      title: 'Gold Necklace',
+      productId: '120499322343',
+      image: {
+        src: '/../public/gold_necklace.jpg',
+        alt: 'A golden necklace in editorial styling. Rays of sunlight and pastel colors draw the attention to the necklace sitting on a minimal background.',
+        width: '250',
+        height: '250',
+      },
     },
   ];
 
   return {
     props: {
-      images,
+      products,
     },
   };
 }
