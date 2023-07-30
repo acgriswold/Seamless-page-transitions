@@ -18,7 +18,7 @@ export default function BaseLayout({ children }: LayoutProps) {
       <Header />
 
       <main className={styles.main}>
-        <section>{children}</section>
+        <section className="prose prose-sm">{children}</section>
       </main>
 
       <Footer />
