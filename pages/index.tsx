@@ -1,4 +1,4 @@
-import { Product } from '../components/product';
+import { ProductCard } from '../components/productCard';
 
 import styles from '../styles/Home.module.css';
 
@@ -6,7 +6,7 @@ export default function Home({ products }) {
   return (
     <div className={styles.container}>
       {products.map((product) => {
-        return <Product key={product.title} {...product} />;
+        return <ProductCard key={product.title} {...product} />;
       })}
     </div>
   );

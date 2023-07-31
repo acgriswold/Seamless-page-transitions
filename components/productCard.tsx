@@ -12,7 +12,7 @@ export type ProductProps = {
   productId: string;
 };
 
-export function Product(props: ProductProps) {
+export function ProductCard(props: ProductProps) {
   return (
     <div className="daisy-card daisy-card-compact daisy-card-bordered bg-base-100 shadow-sm not-prose">
       <figure>
