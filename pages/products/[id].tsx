@@ -10,7 +10,7 @@ function RenderError() {
   return <p>Product not found</p>;
 }
 
-function RenderPage({ product: { title, productId, image } }) {
+function RenderPage({ title, productId, image }) {
   return (
     <>
       <p className="prose text-center">
@@ -31,6 +31,6 @@ function RenderPage({ product: { title, productId, image } }) {
 export async function getServerSideProps({ query }) {
   const product = await getProduct(query.id);
   return {
-    props: { product: product ?? null },
+    props: { product: product },
   };
 }

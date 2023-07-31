@@ -8,6 +8,9 @@ module.exports = {
   theme: {
     extend: {},
   },
+  corePlugins: {
+    textDecoration: false,
+  },
   plugins: [require('daisyui'), require('@tailwindcss/typography')],
   daisyui: {
     themes: ['emerald', 'light', 'night'],

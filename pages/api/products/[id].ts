@@ -8,7 +8,7 @@ export async function getProduct(id: string) {
 
 export default async (req, res) => {
   if (req.method === 'GET') {
-    const response = await getProduct('1');
+    const response = await getProduct(req.params.id);
     res.status(200).json({ product: response });
   }
 };
