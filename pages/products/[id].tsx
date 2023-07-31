@@ -1,6 +1,16 @@
 import Image from 'next/image';
 
-export default function ProductPage({ product: { title, productId, image } }) {
+import { getProduct } from '../api/products/[id]';
+
+export default function ProductPage({ product }) {
+  return product === null ? RenderError() : RenderPage(product);
+}
+
+function RenderError() {
+  return <p>Product not found</p>;
+}
+
+function RenderPage({ product: { title, productId, image } }) {
   return (
     <>
       <p className="prose text-center">
@@ -18,19 +28,9 @@ export default function ProductPage({ product: { title, productId, image } }) {
   );
 }
 
-export function getServerSideProps({ query }) {
-  const product = {
-    title: 'Gold Necklace',
-    productId: '120499322343',
-    image: {
-      src: '/../public/gold_necklace.jpg',
-      alt: 'A golden necklace in editorial styling. Rays of sunlight and pastel colors draw the attention to the necklace sitting on a minimal background.',
-      width: '750',
-      height: '750',
-    },
-  };
-
+export async function getServerSideProps({ query }) {
+  const product = await getProduct(query.id);
   return {
-    props: { product },
+    props: { product: product ?? null },
   };
 }

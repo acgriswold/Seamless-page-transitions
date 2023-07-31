@@ -1,9 +1,12 @@
 import { ProductCard } from '../components/productCard';
+import { getProducts } from './api/products';
 
 import styles from '../styles/Home.module.css';
 
 export default function Home({ products }) {
-  return (
+  return products === null ? (
+    <h2>No products found</h2>
+  ) : (
     <div className={styles.container}>
       {products.map((product) => {
         return <ProductCard key={product.title} {...product} />;
@@ -12,23 +15,11 @@ export default function Home({ products }) {
   );
 }
 
-export function getServerSideProps() {
-  const products = [
-    {
-      title: 'Gold Necklace',
-      productId: '120499322343',
-      image: {
-        src: '/../public/gold_necklace.jpg',
-        alt: 'A golden necklace in editorial styling. Rays of sunlight and pastel colors draw the attention to the necklace sitting on a minimal background.',
-        width: '250',
-        height: '250',
-      },
-    },
-  ];
-
+export async function getServerSideProps() {
+  const products = await getProducts();
   return {
     props: {
-      products,
+      products: products ?? null,
     },
   };
 }
