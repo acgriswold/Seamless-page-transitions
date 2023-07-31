@@ -14,11 +14,10 @@ export default function BaseLayout({ children }: LayoutProps) {
       <Head>
         <title>Seamless | Fully Animated Photography Sharing Platform</title>
       </Head>
-
       <Header />
 
-      <main className={styles.main}>
-        <section className="prose prose-sm">{children}</section>
+      <main className="flex justify-center align-center">
+        <section>{children}</section>
       </main>
 
       <Footer />

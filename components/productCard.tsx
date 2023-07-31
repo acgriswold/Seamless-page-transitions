@@ -24,7 +24,7 @@ export function ProductCard(props: ProductProps) {
         />
       </figure>
 
-      <div className="daisy-card-body grid gap-auto grid-cols-2 prose">
+      <div className="prose prose-sm daisy-card-body grid gap-auto grid-cols-2 prose">
         <strong>{props.title}</strong>
         <div className="text-right">{props.productId}</div>
       </div>

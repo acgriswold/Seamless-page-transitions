@@ -13,29 +13,29 @@ function RenderError() {
 
 function RenderPage({ title, productId, lead, description, image }) {
   return (
-    <>
-      <div className="prose-sm grid grid-cols-2 gap-auto">
+    <div className="flex flex-col prose">
+      <div className="grid grid-cols-2 gap-auto">
         <div>
           <span>{productId}</span>
         </div>
         <a className="text-right">Contact offers</a>
       </div>
-      <h2 className="text-center prose-2xl">{title}</h2>
 
-      <div>
-        <Image
-          src={image.src}
-          alt={image.alt}
-          width={image.width}
-          height={image.height}
-        />
-      </div>
+      <h2 className="prose prose-sm text-center prose-2xl">{title}</h2>
 
-      <div>
+      <Image
+        className="no-prose"
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+      />
+
+      <div className="grid prose-md text-center">
         <h2 className="title">{lead}</h2>
         <p>{description}</p>
       </div>
-    </>
+    </div>
   );
 }
 
