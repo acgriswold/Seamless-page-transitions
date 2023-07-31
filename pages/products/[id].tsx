@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import { ScrollForMore } from '../../components/scrollForMore';
 import { getProduct } from '../api/products/[id]';
 
 export default function ProductPage({ product }) {
@@ -10,20 +11,30 @@ function RenderError() {
   return <p>Product not found</p>;
 }
 
-function RenderPage({ title, productId, image }) {
+function RenderPage({ title, productId, lead, description, image }) {
   return (
     <>
-      <p className="prose text-center">
-        {title} - {productId}
-      </p>
+      <div className="prose-sm grid grid-cols-2 gap-auto">
+        <div>
+          <span>{productId}</span>
+        </div>
+        <a className="text-right">Contact offers</a>
+      </div>
+      <h2 className="text-center prose-2xl">{title}</h2>
 
-      <Image
-        className="w-screen"
-        src={image.src}
-        alt={image.alt}
-        width={image.width}
-        height={image.height}
-      />
+      <div>
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+        />
+      </div>
+
+      <div>
+        <h2 className="title">{lead}</h2>
+        <p>{description}</p>
+      </div>
     </>
   );
 }

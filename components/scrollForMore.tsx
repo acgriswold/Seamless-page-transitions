@@ -1,6 +1,6 @@
 export function ScrollForMore() {
   return (
-    <>
+    <div className="absolute bottom-10 left-15">
       <div className="icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -27,6 +27,6 @@ export function ScrollForMore() {
         Scroll <br />
         for more
       </div>
-    </>
+    </div>
   );
 }
