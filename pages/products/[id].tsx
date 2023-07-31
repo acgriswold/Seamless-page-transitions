@@ -3,15 +3,12 @@ import Image from 'next/image';
 export default function ProductPage({ product: { title, productId, image } }) {
   return (
     <>
-      <p className="prose-lg text-center">
-        Product
-        <h4>
-          {title} - {productId}
-        </h4>
+      <p className="prose text-center">
+        {title} - {productId}
       </p>
 
       <Image
-        className="align-center w-full"
+        className="w-screen"
         src={image.src}
         alt={image.alt}
         width={image.width}
