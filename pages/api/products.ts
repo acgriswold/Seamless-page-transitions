@@ -1,4 +1,10 @@
-export async function getProducts() {
+export async function getProducts({
+  width,
+  height,
+}: {
+  width: number;
+  height: number;
+}) {
   const products = [
     {
       title: 'Gold Necklace',
@@ -6,8 +12,8 @@ export async function getProducts() {
       image: {
         src: '/../public/static/images/gold_necklace.jpg',
         alt: 'A golden necklace in editorial styling. Rays of sunlight and pastel colors draw the attention to the necklace sitting on a minimal background.',
-        width: '750',
-        height: '750',
+        width: width,
+        height: height,
       },
     },
   ];
@@ -17,7 +23,7 @@ export async function getProducts() {
 
 export default async (req, res) => {
   if (req.method === 'GET') {
-    const products = await getProducts();
+    const products = await getProducts({ width: 450, height: 450 });
     res.status(200).json({ products });
   }
 };

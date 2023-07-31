@@ -29,7 +29,7 @@ function RenderPage({ title, productId, image }) {
 }
 
 export async function getServerSideProps({ query }) {
-  const product = await getProduct(query.id);
+  const product = await getProduct({ id: query.id, width: 750, height: 750 });
   return {
     props: { product: product },
   };
