@@ -9,6 +9,7 @@ It is an exercise in layout animations and transitioning states between pages.
 - Typescript
 
 ### Animation/ visuals
+
 - framer.motion
 - tailwindcss
 - daisyui
