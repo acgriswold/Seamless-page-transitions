@@ -6,8 +6,8 @@ export async function getProducts() {
       image: {
         src: '/../public/gold_necklace.jpg',
         alt: 'A golden necklace in editorial styling. Rays of sunlight and pastel colors draw the attention to the necklace sitting on a minimal background.',
-        width: '250',
-        height: '250',
+        width: '750',
+        height: '750',
       },
     },
   ];
