@@ -21,10 +21,10 @@ function RenderPage({ title, productId, lead, description, image }) {
         <a className="text-right">Contact offers</a>
       </div>
 
-      <h2 className="prose prose-sm text-center prose-2xl">{title}</h2>
+      <h2 className="text-center prose-2xl">{title}</h2>
 
       <Image
-        className="no-prose"
+        className="max-w-none flex-grow"
         src={image.src}
         alt={image.alt}
         width={image.width}
