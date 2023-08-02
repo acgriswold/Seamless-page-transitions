@@ -1,34 +1,46 @@
-import { Product } from '../components/product';
+import Link from 'next/link';
+
+import { ProductCard } from '../components/productCard';
+import { getProducts } from './api/products';
 
 import styles from '../styles/Home.module.css';
 
 export default function Home({ products }) {
   return (
-    <div className={styles.container}>
-      {products.map((product) => {
-        return <Product key={product.title} {...product} />;
-      })}
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+      {Products(products)}
     </div>
   );
 }
 
-export function getServerSideProps() {
-  const products = [
-    {
-      title: 'Gold Necklace',
-      productId: '120499322343',
-      image: {
-        src: '/../public/gold_necklace.jpg',
-        alt: 'A golden necklace in editorial styling. Rays of sunlight and pastel colors draw the attention to the necklace sitting on a minimal background.',
-        width: '250',
-        height: '250',
-      },
-    },
-  ];
+function Products(products) {
+  const explicitTextInheritance = {
+    font: 'inherit',
+    textDecoration: 'inherit',
+    fontFamily: 'inherit',
+  };
 
+  return products === null ? (
+    <h2>No products found</h2>
+  ) : (
+    <>
+      {products.map((product) => {
+        const route = `./products/${product.productId}`;
+        return (
+          <Link href={route} style={{ ...explicitTextInheritance }}>
+            <ProductCard key={product.title} {...product} />
+          </Link>
+        );
+      })}
+    </>
+  );
+}
+
+export async function getServerSideProps() {
+  const products = await getProducts({ width: 250, height: 250 });
   return {
     props: {
-      products,
+      products: products ?? null,
     },
   };
 }

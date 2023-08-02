@@ -12,7 +12,7 @@ export type ProductProps = {
   productId: string;
 };
 
-export function Product(props: ProductProps) {
+export function ProductCard(props: ProductProps) {
   return (
     <div className="daisy-card daisy-card-compact daisy-card-bordered bg-base-100 shadow-sm not-prose">
       <figure>
@@ -24,7 +24,7 @@ export function Product(props: ProductProps) {
         />
       </figure>
 
-      <div className="daisy-card-body grid gap-auto grid-cols-2 prose">
+      <div className="prose prose-sm daisy-card-body grid gap-auto grid-cols-2 prose">
         <strong>{props.title}</strong>
         <div className="text-right">{props.productId}</div>
       </div>
