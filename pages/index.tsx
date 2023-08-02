@@ -3,13 +3,40 @@ import Link from 'next/link';
 import { ProductCard } from '../components/productCard';
 import { getProducts } from './api/products';
 
-import styles from '../styles/Home.module.css';
+import { motion } from 'framer-motion';
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      ease: [0.17, 0.67, 0.83, 0.67],
+    },
+  },
+};
+
+const productVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+  },
+};
 
 export default function Home({ products }) {
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="show"
+      className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8"
+    >
       {Products(products)}
-    </div>
+    </motion.div>
   );
 }
 
@@ -27,9 +54,11 @@ function Products(products) {
       {products.map((product) => {
         const route = `./products/${product.productId}`;
         return (
-          <Link href={route} style={{ ...explicitTextInheritance }}>
-            <ProductCard key={product.title} {...product} />
-          </Link>
+          <motion.div variants={productVariants}>
+            <Link href={route} style={{ ...explicitTextInheritance }}>
+              <ProductCard key={product.title} {...product} />
+            </Link>
+          </motion.div>
         );
       })}
     </>
