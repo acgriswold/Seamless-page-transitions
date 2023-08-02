@@ -3,7 +3,6 @@ import Head from 'next/head';
 
 import Header from './header';
 import Footer from './footer';
-import styles from '../../styles/Home.module.css';
 
 interface InternalLayoutProps {}
 type LayoutProps = PropsWithChildren<InternalLayoutProps>;
@@ -16,7 +15,7 @@ export default function BaseLayout({ children }: LayoutProps) {
       </Head>
       <Header />
 
-      <main className="flex justify-center align-center">
+      <main className="flex justify-center align-center mt-4 mb-8">
         <section>{children}</section>
       </main>
 

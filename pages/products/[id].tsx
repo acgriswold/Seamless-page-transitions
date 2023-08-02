@@ -24,7 +24,7 @@ function RenderPage({ title, productId, lead, description, image }) {
       <h2 className="text-center prose-2xl">{title}</h2>
 
       <Image
-        className="max-w-none flex-grow"
+        className="flex-grow"
         src={image.src}
         alt={image.alt}
         width={image.width}
