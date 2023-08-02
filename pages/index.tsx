@@ -33,6 +33,7 @@ export default function Home({ products }) {
       variants={containerVariants}
       initial="hidden"
       animate="show"
+      transition={{ ease: [0.17, 0.67, 0.83, 0.67] }}
       className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8"
     >
       {Products(products)}
