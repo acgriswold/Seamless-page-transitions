@@ -55,7 +55,10 @@ function Products(products) {
       {products.map((product) => {
         const route = `./products/${product.productId}`;
         return (
-          <motion.div variants={productVariants}>
+          <motion.div
+            variants={productVariants}
+            layoutId={`wrapped-image-${product.productId}`}
+          >
             <Link href={route} style={{ ...explicitTextInheritance }}>
               <ProductCard key={product.title} {...product} />
             </Link>

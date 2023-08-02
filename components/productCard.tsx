@@ -24,6 +24,7 @@ export function ProductCard(props: ProductProps) {
       <figure>
         <motion.div whileHover={{ scale: 1.1 }} transition={smooth}>
           <Image
+            id={props.productId}
             src={props.image.src}
             alt={props.image.alt}
             width={props.image.width}
