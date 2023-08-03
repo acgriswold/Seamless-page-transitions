@@ -18,6 +18,19 @@ function RenderError() {
 function RenderPage({ title, productId, lead, description, image }) {
   const { smooth } = useTransition();
 
+  const imageVariants = {
+    enter: {
+      opacity: 1,
+      width: '100%',
+      height: '100%',
+      transition: { ...smooth },
+    },
+    exit: {
+      opacity: 0,
+      transition: { delay: 0.5, ...smooth },
+    },
+  };
+
   return (
     <div className="flex flex-col prose">
       <div className="grid grid-cols-2 gap-auto">
@@ -31,19 +44,8 @@ function RenderPage({ title, productId, lead, description, image }) {
 
       <motion.div
         layoutId={`wrapped-image-${productId}`}
-        initial={{
-          y: 0,
-          height: 250,
-        }}
-        animate={{
-          y: 0,
-          width: '100%',
-          height: window.innerWidth > 1440 ? 800 : 400,
-          transition: { delay: 0.2, ...smooth },
-        }}
-        exit={{
-          transition: { smooth },
-        }}
+        variants={imageVariants}
+        onAnimationEnd={() => {}}
       >
         <Image
           id={productId}
