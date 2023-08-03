@@ -27,13 +27,13 @@ const containerVariants = {
 };
 
 const productVariants = {
-  enter: { opacity: 1 },
-  exit: { opacity: 0 },
+  enter: { opacity: 1, transition: {} },
+  exit: { opacity: 0, transition: {} },
 };
 
 const isNavigatingProductVariants = {
-  enter: { opacity: 1 },
-  exit: { opacity: 1 },
+  enter: { opacity: 1, transition: {} },
+  exit: { opacity: 1, transition: {} },
 };
 
 export default function Home({ products }) {
@@ -71,6 +71,7 @@ function Products(products) {
               isNavigatingTo ? isNavigatingProductVariants : productVariants
             }
             layoutId={`wrapped-image-${product.productId}`}
+            transition={{ duration: 0 }}
           >
             <Link
               href={route}
