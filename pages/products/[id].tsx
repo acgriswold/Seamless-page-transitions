@@ -130,7 +130,7 @@ function RenderPage({ title, productId, lead, description, image }) {
       <motion.div
         layoutId={`wrapped-image-${productId}`}
         variants={imageVariants}
-        onAnimationEnd={() => {}}
+        transition={{ ...smooth}}
       >
         <Image
           id={productId}
