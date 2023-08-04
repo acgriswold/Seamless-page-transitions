@@ -85,10 +85,12 @@ function RenderPage({ title, productId, lead, description, image }) {
   };
 
   const imageVariants = {
+    hidden: {
+      scale: 1.1,
+    },
     enter: {
       opacity: 1,
-      width: '100%',
-      height: '100%',
+      scale: 1,
       transition: { ...smooth },
     },
     exit: {
@@ -130,14 +132,16 @@ function RenderPage({ title, productId, lead, description, image }) {
       <motion.div
         layoutId={`wrapped-image-${productId}`}
         variants={imageVariants}
-        transition={{ ...smooth}}
+        transition={{ ...smooth }}
+        className="relative width-full"
+        style={{ height: image.height }}
       >
         <Image
+          fill
+          className="object-cover"
           id={productId}
           src={image.src}
           alt={image.alt}
-          width={image.width}
-          height={image.height}
         />
       </motion.div>
 
@@ -153,7 +157,7 @@ function RenderPage({ title, productId, lead, description, image }) {
 }
 
 export async function getServerSideProps({ query }) {
-  const product = await getProduct({ id: query.id, width: 750, height: 750 });
+  const product = await getProduct({ id: query.id, width: 900, height: 400 });
   return {
     props: { product: product },
   };
