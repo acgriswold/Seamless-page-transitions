@@ -20,12 +20,12 @@ export type ProductProps = {
 export function ProductCard(props: ProductProps) {
   let [isNavigatingTo, setIsNavigatingTo] = useState(false);
   const productVariants = {
-    enter: { opacity: 1 },
-    exit: { opacity: 0 },
+    enter: { opacity: 1, transition: {} },
+    exit: { opacity: 0, transition: {} },
   };
 
   const isNavigatingProductVariants = {
-    enter: { opacity: 1 },
+    enter: { opacity: 1, transition: {} },
     exit: {
       opacity: 1,
       borderRadius: 0,
@@ -68,17 +68,17 @@ export function ProductCard(props: ProductProps) {
   return (
     <motion.div
       className="daisy-card daisy-card-bordered bg-base-100 shadow-sm not-prose"
+      transition={{ duration: 0 }}
       variants={isNavigatingTo ? isNavigatingProductVariants : productVariants}
       onClickCapture={() => {
         setIsNavigatingTo(true);
       }}
     >
-      <figure>
+      <motion.figure>
         <motion.div
           layoutId={`wrapped-image-${props.productId}`}
-          whileHover={{ scale: 1.1, transition: smooth }}
-          animate={{ transition: { duration: 1 } }}
-          transition={{ duration: 0 }}
+          whileHover={{ scale: 1.1 }}
+          transition={smooth}
           className="relative w-full"
           style={{ height: props.image.height }}
         >
@@ -89,7 +89,7 @@ export function ProductCard(props: ProductProps) {
             alt={props.image.alt}
           />
         </motion.div>
-      </figure>
+      </motion.figure>
 
       <div className="prose prose-sm daisy-card-body grid gap-auto grid-cols-2 prose">
         <motion.strong variants={titleVariants}>{props.title}</motion.strong>
