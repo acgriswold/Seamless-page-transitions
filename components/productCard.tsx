@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 import { useTransition } from '../hooks/useMotion';
+import { useState } from 'react';
 
 interface IProductImage {
   src: string;
@@ -17,6 +18,23 @@ export type ProductProps = {
 };
 
 export function ProductCard(props: ProductProps) {
+  let [isNavigatingTo, setIsNavigatingTo] = useState(false);
+  const productVariants = {
+    enter: { opacity: 1 },
+    exit: { opacity: 0 },
+  };
+
+  const isNavigatingProductVariants = {
+    enter: { opacity: 1 },
+    exit: {
+      opacity: 1,
+      borderRadius: 0,
+      borderColor: '#ffffff',
+      boxShadow: 0,
+      transition: { duration: 1, delay: 0.2 },
+    },
+  };
+
   const { smooth } = useTransition();
 
   const titleVariants = {
@@ -48,15 +66,27 @@ export function ProductCard(props: ProductProps) {
   };
 
   return (
-    <div className="daisy-card daisy-card-compact daisy-card-bordered bg-base-100 shadow-sm not-prose">
+    <motion.div
+      className="daisy-card daisy-card-bordered bg-base-100 shadow-sm not-prose"
+      variants={isNavigatingTo ? isNavigatingProductVariants : productVariants}
+      onClickCapture={() => {
+        setIsNavigatingTo(true);
+      }}
+    >
       <figure>
-        <motion.div whileHover={{ scale: 1.1 }} transition={smooth}>
+        <motion.div
+          layoutId={`wrapped-image-${props.productId}`}
+          whileHover={{ scale: 1.1, transition: smooth }}
+          animate={{ transition: { duration: 1 } }}
+          transition={{ duration: 0 }}
+          className="relative w-full"
+          style={{ height: props.image.height }}
+        >
           <Image
-            id={props.productId}
+            fill
+            className="object-cover"
             src={props.image.src}
             alt={props.image.alt}
-            width={props.image.width}
-            height={props.image.height}
           />
         </motion.div>
       </figure>
@@ -67,6 +97,6 @@ export function ProductCard(props: ProductProps) {
           {props.productId}
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }

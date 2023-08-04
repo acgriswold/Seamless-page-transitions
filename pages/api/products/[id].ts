@@ -1,4 +1,4 @@
-import { getProducts } from '../products.ts';
+import { getProducts } from '../products';
 
 export async function getProduct({
   id,

@@ -26,16 +26,6 @@ const containerVariants = {
   },
 };
 
-const productVariants = {
-  enter: { opacity: 1, transition: {} },
-  exit: { opacity: 0, transition: {} },
-};
-
-const isNavigatingProductVariants = {
-  enter: { opacity: 1, transition: {} },
-  exit: { opacity: 1, transition: {} },
-};
-
 export default function Home({ products }) {
   return (
     <motion.div
@@ -63,23 +53,10 @@ function Products(products) {
     <>
       {products.map((product) => {
         const route = `./products/${product.productId}`;
-        let [isNavigatingTo, setIsNavigatingTo] = useState(false);
 
         return (
-          <motion.div
-            variants={
-              isNavigatingTo ? isNavigatingProductVariants : productVariants
-            }
-            layoutId={`wrapped-image-${product.productId}`}
-            transition={{ duration: 0 }}
-          >
-            <Link
-              href={route}
-              style={{ ...explicitTextInheritance }}
-              onClickCapture={() => {
-                setIsNavigatingTo(true);
-              }}
-            >
+          <motion.div>
+            <Link href={route} style={{ ...explicitTextInheritance }}>
               <ProductCard key={product.title} {...product} />
             </Link>
           </motion.div>
@@ -90,7 +67,7 @@ function Products(products) {
 }
 
 export async function getServerSideProps() {
-  const products = await getProducts({ width: 250, height: 250 });
+  const products = await getProducts({ width: 200, height: 200 });
   return {
     props: {
       products: products ?? null,
