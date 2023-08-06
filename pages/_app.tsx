@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import BaseLayout from '../components/global/baseLayout';
 
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, MotionConfig } from 'framer-motion';
 import { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
@@ -11,9 +11,11 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
 
   return (
     <BaseLayout>
-      <AnimatePresence mode="wait" initial={false}>
-        <Component {...pageProps} conanical={url} key={url} />
-      </AnimatePresence>
+      <MotionConfig reducedMotion="user">
+        <AnimatePresence mode="wait" initial={false}>
+          <Component {...pageProps} conanical={url} key={url} />
+        </AnimatePresence>
+      </MotionConfig>
     </BaseLayout>
   );
 }
