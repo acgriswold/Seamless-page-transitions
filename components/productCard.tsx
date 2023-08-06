@@ -68,6 +68,7 @@ export function ProductCard(props: ProductProps) {
   return (
     <motion.div
       className="daisy-card daisy-card-bordered bg-base-100 shadow-sm not-prose"
+      layoutId={`wrapped-image-${props.productId}`}
       transition={{ duration: 0 }}
       variants={isNavigatingTo ? isNavigatingProductVariants : productVariants}
       onClickCapture={() => {
@@ -76,7 +77,6 @@ export function ProductCard(props: ProductProps) {
     >
       <motion.figure>
         <motion.div
-          layoutId={`wrapped-image-${props.productId}`}
           whileHover={{ scale: 1.1 }}
           transition={smooth}
           className="relative w-full"
