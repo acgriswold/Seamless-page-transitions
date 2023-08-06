@@ -91,7 +91,6 @@ function RenderPage({ title, productId, lead, description, image }) {
     enter: {
       opacity: 1,
       scale: 1,
-      transition: { ...smooth },
     },
     exit: {
       opacity: 0,
@@ -132,7 +131,7 @@ function RenderPage({ title, productId, lead, description, image }) {
       <motion.div
         layoutId={`wrapped-image-${productId}`}
         variants={imageVariants}
-        transition={{ ...smooth }}
+        transition={{ duration: 1, ease: [0.21, 0.51, 0.41, 0.98] }}
         className="relative width-full"
         style={{ height: image.height }}
       >
